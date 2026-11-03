@@ -1,0 +1,5 @@
+base: lgbm_lf_l8.yaml
+name: lgbm_lf_l8_big
+notes: "vs lgbm_lf_l8: bigger trees (127 leaves), more regularised (min 40 rows per leaf, L2 5). Same number of trees."
+model:
+  params: {num_leaves: 127, min_child_samples: 40, reg_lambda: 5.0}

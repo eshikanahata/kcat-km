@@ -1,0 +1,22 @@
+base: ens_lf_l6.yaml
+name: ens4_lf_l6
+notes: "ens_lf_l6 + CatBoost + a two-tower interaction network (protein x molecule). Tune weights afterwards."
+model:
+  name: ensemble
+  members:
+    - name: lgbm
+      weight: 1.0
+      params: {n_estimators: 1500, learning_rate: 0.03, num_leaves: 63, min_child_samples: 20, subsample: 0.8,
+               subsample_freq: 1, colsample_bytree: 0.3, reg_lambda: 1.0, objective: huber, alpha: 1.0}
+    - name: mlp
+      weight: 1.0
+      params: {hidden: [512, 256], dropout: 0.3, input_dropout: 0.1, epochs: 40, batch_size: 256, lr: 0.001,
+               weight_decay: 0.01, loss: huber, huber_delta: 1.0}
+    - name: catboost
+      weight: 1.0
+      params: {iterations: 2000, learning_rate: 0.05, depth: 8, rsm: 0.2, l2_leaf_reg: 3.0,
+               loss_function: "Huber:delta=1.0"}
+    - name: fusion
+      weight: 1.0
+      params: {width: 128, other_width: 64, hidden: [256], dropout: 0.2, input_dropout: 0.1, epochs: 40,
+               batch_size: 256, lr: 0.001, weight_decay: 0.01, loss: huber, huber_delta: 1.0}

@@ -1,0 +1,10 @@
+base: lgbm_lf_esm8.yaml
+name: lgbm_lf_esm8_mm
+notes: "vs lgbm_lf_esm8: ESM-2 8M mean + max pooling (max catches local motifs such as the active site; same inference time)."
+features:
+  - seq_len
+  - seq_physchem
+  - morgan: {radius: 2, n_bits: 1024, counts: true}
+  - rdkit_desc
+  - esm: {model: facebook/esm2_t6_8M_UR50D, pooling: mean_max}
+  - chemberta: {model: DeepChem/ChemBERTa-77M-MTR}

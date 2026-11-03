@@ -1,0 +1,10 @@
+base: lgbm_lf.yaml
+name: lgbm_lf_int8
+notes: "vs lgbm_lf: ESM-2 35M with int8 quantization (~1.3x faster inference). Must not be worse to adopt."
+features:
+  - seq_len
+  - seq_physchem
+  - morgan: {radius: 2, n_bits: 1024, counts: true}
+  - rdkit_desc
+  - esm: {model: facebook/esm2_t12_35M_UR50D, pooling: mean, quantize: int8}
+  - chemberta: {model: DeepChem/ChemBERTa-77M-MTR}

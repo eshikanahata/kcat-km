@@ -1,0 +1,5 @@
+base: lgbm_combo.yaml
+name: lgbm_combo_huber
+notes: "vs lgbm_combo: + Huber loss. Does Huber still help once ChemBERTa is in?"
+model:
+  params: {objective: huber, alpha: 1.0}

@@ -1,0 +1,5 @@
+base: lgbm_lf_l6.yaml
+name: lgbm_lf_l6_ex
+notes: "vs lgbm_lf_l6: + extra training rows (data/raw/extra_train.parquet, training only; same folds and scoring)."
+data:
+  extra_data: true

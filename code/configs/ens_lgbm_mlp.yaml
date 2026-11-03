@@ -1,0 +1,31 @@
+base: lgbm_combo.yaml
+name: ens_lgbm_mlp
+notes: "50/50 average of lgbm_combo_huber and mlp on the same features. Member OOFs are saved for weight tuning."
+model:
+  name: ensemble
+  members:
+    - name: lgbm
+      weight: 0.5
+      params:
+        n_estimators: 1500
+        learning_rate: 0.03
+        num_leaves: 63
+        min_child_samples: 20
+        subsample: 0.8
+        subsample_freq: 1
+        colsample_bytree: 0.3
+        reg_lambda: 1.0
+        objective: huber
+        alpha: 1.0
+    - name: mlp
+      weight: 0.5
+      params:
+        hidden: [512, 256]
+        dropout: 0.3
+        input_dropout: 0.1
+        epochs: 40
+        batch_size: 256
+        lr: 0.001
+        weight_decay: 0.01
+        loss: huber
+        huber_delta: 1.0

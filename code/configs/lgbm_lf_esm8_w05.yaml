@@ -1,0 +1,4 @@
+base: lgbm_lf_esm8.yaml
+name: lgbm_lf_esm8_w05
+notes: "vs lgbm_lf_esm8: rows weighted 1/sqrt(rows of their enzyme), closer to the test set's ~2 rows per enzyme."
+sample_weight: {power: 0.5}

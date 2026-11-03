@@ -1,0 +1,5 @@
+base: lgbm_lf_l8.yaml
+name: lgbm_lf_l8_sknn
+notes: "vs lgbm_lf_l8: + substrate kNN label feature (labels of the most similar OTHER substrates, ChemBERTa cosine)."
+label_features:
+  substrate_knn: {k: 10, tau: 0.1, prefix: ChemBERTa}

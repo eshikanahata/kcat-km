@@ -1,0 +1,18 @@
+base: ens_lf_esm8.yaml
+name: ens3_lf_esm8
+notes: "ens_lf_esm8 + XGBoost as a third member (same features). Tune weights afterwards."
+model:
+  name: ensemble
+  members:
+    - name: lgbm
+      weight: 1.0
+      params: {n_estimators: 1500, learning_rate: 0.03, num_leaves: 63, min_child_samples: 20, subsample: 0.8,
+               subsample_freq: 1, colsample_bytree: 0.3, reg_lambda: 1.0, objective: huber, alpha: 1.0}
+    - name: mlp
+      weight: 1.0
+      params: {hidden: [512, 256], dropout: 0.3, input_dropout: 0.1, epochs: 40, batch_size: 256, lr: 0.001,
+               weight_decay: 0.01, loss: huber, huber_delta: 1.0}
+    - name: xgb
+      weight: 1.0
+      params: {n_estimators: 1500, learning_rate: 0.03, max_depth: 8, min_child_weight: 5, subsample: 0.8,
+               colsample_bytree: 0.3, reg_lambda: 1.0, objective: "reg:pseudohubererror", huber_slope: 1.0}

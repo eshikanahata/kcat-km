@@ -1,0 +1,6 @@
+base: ens_lf_esm8_exk.yaml
+name: ens_lf_esm8_exb
+notes: "ens_lf_esm8_exk + checked extra data for BOTH targets: kcat from Leak-CURBER + DLKcat, Km from CatPred (each row trains only the targets whose labels passed the check)."
+data:
+  extra_data: true
+  extra_targets: [log10_kcat, log10_km]

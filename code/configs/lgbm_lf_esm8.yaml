@@ -1,0 +1,12 @@
+base: lgbm_lf.yaml
+name: lgbm_lf_esm8
+notes: "vs lgbm_lf: ESM-2 8M instead of 35M (~4.5x faster inference, for the slow grader / 848-enzyme test set)."
+features:
+  - seq_len
+  - seq_physchem
+  - morgan: {radius: 2, n_bits: 1024, counts: true}
+  - rdkit_desc
+  - esm: {model: facebook/esm2_t6_8M_UR50D, pooling: mean}
+  - chemberta: {model: DeepChem/ChemBERTa-77M-MTR}
+label_features:
+  emb_prefix: esm2_t6_8M_mean_

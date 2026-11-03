@@ -1,0 +1,10 @@
+base: lgbm_lf.yaml
+name: lgbm_lf_l8_mm
+notes: "vs lgbm_lf_l8: mean + max pooling of the 35M layer-8 states (max catches local motifs; same inference time)."
+features:
+  - seq_len
+  - seq_physchem
+  - morgan: {radius: 2, n_bits: 1024, counts: true}
+  - rdkit_desc
+  - esm: {model: facebook/esm2_t12_35M_UR50D, pooling: mean_max, num_layers: 8}
+  - chemberta: {model: DeepChem/ChemBERTa-77M-MTR}

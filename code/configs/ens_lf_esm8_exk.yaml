@@ -1,0 +1,6 @@
+base: ens_lf_esm8.yaml
+name: ens_lf_esm8_exk
+notes: "ens_lf_esm8 + extra training rows for kcat only (the 8M half of the blend)."
+data:
+  extra_data: true
+  extra_targets: [log10_kcat]

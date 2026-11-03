@@ -1,0 +1,6 @@
+base: lgbm_lf_l6.yaml
+name: lgbm_lf_l6_exk
+notes: "vs lgbm_lf_l6: + extra training rows for kcat ONLY (their Km labels disagree with the competition's)."
+data:
+  extra_data: true
+  extra_targets: [log10_kcat]

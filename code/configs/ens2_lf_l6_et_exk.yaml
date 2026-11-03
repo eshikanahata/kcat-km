@@ -1,0 +1,13 @@
+base: ens3_lf_l6_trees_exk.yaml
+name: ens2_lf_l6_et_exk
+notes: "layer 6 + kcat-only extra data; LightGBM + ExtraTrees (the two members that carried ~90% of the trees ensemble's weight; CatBoost dropped to halve the time)."
+model:
+  name: ensemble
+  members:
+    - name: lgbm
+      weight: 1.0
+      params: {n_estimators: 1500, learning_rate: 0.03, num_leaves: 63, min_child_samples: 20, subsample: 0.8,
+               subsample_freq: 1, colsample_bytree: 0.3, reg_lambda: 1.0, objective: huber, alpha: 1.0}
+    - name: extratrees
+      weight: 1.0
+      params: {n_estimators: 300, max_features: 0.2, min_samples_leaf: 5}

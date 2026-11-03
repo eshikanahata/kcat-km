@@ -1,0 +1,5 @@
+base: lgbm_esm.yaml
+name: lgbm_esm_huber
+notes: "vs lgbm_esm35m: Huber loss (delta 1.0 log units) to limit the pull of outlier labels (residuals up to 8)."
+model:
+  params: {objective: huber, alpha: 1.0}

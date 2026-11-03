@@ -1,0 +1,21 @@
+base: base.yaml
+name: lgbm_handcrafted
+notes: First real baseline. Hand-crafted protein features + Morgan counts + RDKit descriptors, LightGBM per target.
+features:
+  - seq_len
+  - aac
+  - dpc
+  - seq_physchem
+  - morgan: {radius: 2, n_bits: 1024, counts: true}
+  - rdkit_desc
+model:
+  name: lgbm
+  params:
+    n_estimators: 1500
+    learning_rate: 0.03
+    num_leaves: 63
+    min_child_samples: 20
+    subsample: 0.8
+    subsample_freq: 1
+    colsample_bytree: 0.3
+    reg_lambda: 1.0

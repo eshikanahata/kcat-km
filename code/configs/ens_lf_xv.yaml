@@ -1,0 +1,5 @@
+base: ens_lf.yaml
+name: ens_lf_xv
+notes: "ens_lf (ESM-2 35M) + labelled val rows in training."
+data:
+  extra_train: labelled_val

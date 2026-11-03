@@ -1,0 +1,10 @@
+base: ens_lf.yaml
+name: ens_lf_int8
+notes: "ens_lf with ESM-2 35M int8 (faster inference for the 848-enzyme test set)."
+features:
+  - seq_len
+  - seq_physchem
+  - morgan: {radius: 2, n_bits: 1024, counts: true}
+  - rdkit_desc
+  - esm: {model: facebook/esm2_t12_35M_UR50D, pooling: mean, quantize: int8}
+  - chemberta: {model: DeepChem/ChemBERTa-77M-MTR}

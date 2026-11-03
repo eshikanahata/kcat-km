@@ -1,0 +1,15 @@
+base: lgbm_combo.yaml
+name: mlp
+notes: "Multi-task MLP (shared trunk, joint kcat+Km head, Huber) on the lgbm_combo feature set."
+model:
+  name: mlp
+  params:
+    hidden: [512, 256]
+    dropout: 0.3
+    input_dropout: 0.1
+    epochs: 40
+    batch_size: 256
+    lr: 0.001
+    weight_decay: 0.01
+    loss: huber
+    huber_delta: 1.0

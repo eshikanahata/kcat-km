@@ -1,0 +1,6 @@
+base: ens3_lf_l6_trees.yaml
+name: ens3_lf_l6_trees_exk
+notes: "ens3_lf_l6_trees + extra training rows for kcat only."
+data:
+  extra_data: true
+  extra_targets: [log10_kcat]

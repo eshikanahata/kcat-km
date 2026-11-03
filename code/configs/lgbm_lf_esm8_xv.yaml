@@ -1,0 +1,5 @@
+base: lgbm_lf_esm8.yaml
+name: lgbm_lf_esm8_xv
+notes: "vs lgbm_lf_esm8: also train on the labelled val rows (old label definitions). Compare val_mean_scc."
+data:
+  extra_train: labelled_val

@@ -1,0 +1,11 @@
+base: lgbm_lf_esm8.yaml
+name: lgbm_lf_esm8_cross
+notes: "vs lgbm_lf_esm8: kcat model also gets the predicted Km (out-of-fold inside training)."
+model:
+  name: cross
+  sources: {log10_kcat: [log10_km]}
+  inner_folds: 3
+  base:
+    name: lgbm
+    params: {objective: huber, alpha: 1.0, n_estimators: 1500, learning_rate: 0.03, num_leaves: 63,
+             min_child_samples: 20, subsample: 0.8, subsample_freq: 1, colsample_bytree: 0.3, reg_lambda: 1.0}

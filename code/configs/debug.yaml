@@ -1,0 +1,7 @@
+# Fast sanity run: small subsample, 3 folds. Use while writing new features/models.
+base: lgbm_handcrafted.yaml
+name: debug
+data: {subsample: 3000}
+split: {n_folds: 3}
+model:
+  params: {n_estimators: 200}

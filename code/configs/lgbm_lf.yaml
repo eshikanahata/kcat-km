@@ -1,0 +1,9 @@
+base: lgbm_combo_huber.yaml
+name: lgbm_lf
+notes: "vs lgbm_combo_huber: + label-derived features (substrate target encoding, enzyme kNN, same-substrate nearest enzyme)."
+label_features:
+  emb_prefix: esm2_t12_35M_mean_
+  inner_folds: 5
+  smiles_te: {smoothing: 5}
+  enzyme_knn: {k: 10, tau: 0.1}
+  pair_nn: {tau: 0.1}

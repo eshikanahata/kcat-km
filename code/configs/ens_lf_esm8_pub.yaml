@@ -1,0 +1,7 @@
+base: ens_lf_esm8_exb.yaml
+name: ens_lf_esm8_pub
+notes: "competition train + ONLY the new public pairs (DLKcat kcat, CatPred Km; none of Leak-CURBER's own rows). Each row trains the targets it has labels for."
+data:
+  extra_data: true
+  extra_file: extra_public.parquet
+  extra_targets: [log10_kcat, log10_km]

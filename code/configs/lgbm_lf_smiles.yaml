@@ -1,0 +1,6 @@
+base: lgbm_combo_huber.yaml
+name: lgbm_lf_smiles
+notes: "ablation: + substrate target encoding only."
+label_features:
+  inner_folds: 5
+  smiles_te: {smoothing: 5}

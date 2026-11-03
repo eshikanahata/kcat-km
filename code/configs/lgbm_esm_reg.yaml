@@ -1,0 +1,10 @@
+base: lgbm_esm.yaml
+name: lgbm_esm_reg
+notes: "vs lgbm_esm35m: stronger regularisation (smaller trees, bigger leaves, fewer cols per tree) for unseen enzymes."
+model:
+  params:
+    n_estimators: 2000
+    num_leaves: 31
+    min_child_samples: 50
+    colsample_bytree: 0.2
+    reg_lambda: 5.0

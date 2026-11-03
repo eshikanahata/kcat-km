@@ -1,0 +1,5 @@
+base: lgbm_esm.yaml
+name: lgbm_esm_rankgauss
+notes: "vs lgbm_esm35m: train on rank-to-normal transformed targets (metric is rank-based; tames outliers)."
+model:
+  target_transform: rank_gauss

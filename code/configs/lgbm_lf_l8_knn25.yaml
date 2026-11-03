@@ -1,0 +1,5 @@
+base: lgbm_lf_l8.yaml
+name: lgbm_lf_l8_knn25
+notes: "vs lgbm_lf_l8: enzyme kNN over 25 neighbours with sharper weights (tau 0.05) instead of 10 / 0.1."
+label_features:
+  enzyme_knn: {k: 25, tau: 0.05}

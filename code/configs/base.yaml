@@ -1,0 +1,22 @@
+# Defaults every experiment inherits (via `base: base.yaml`).
+# Pick the split ONCE, after running scripts/split_check.py on the real data,
+# then keep it fixed so every run in runs/index.csv is comparable.
+split:
+  strategy: seq_kmer     # random | smiles | seq_exact | seq_kmer | mmseqs
+  threshold: 0.3        # seq_kmer: k-mer cosine linking two sequences into one group
+  n_folds: 5
+  seed: 42
+
+seeds: [42]              # >1 seed averages models per fold (slower, less noisy)
+
+features:
+  - seq_len
+  - aac
+  - smiles_chars
+
+model:
+  name: ridge
+  params: {alpha: 10.0}
+
+data:
+  subsample: null        # e.g. 4000 for fast iteration

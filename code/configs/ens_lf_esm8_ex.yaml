@@ -1,0 +1,5 @@
+base: ens_lf_esm8.yaml
+name: ens_lf_esm8_ex
+notes: "ens_lf_esm8 + extra training rows (the 8M half of the blend)."
+data:
+  extra_data: true

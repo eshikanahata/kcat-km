@@ -1,0 +1,130 @@
+{
+  "submission": "s16_ens_lf_esm8_pub_tuned",
+  "run_id": "20261101-121510_ens_lf_esm8_pub_tuned",
+  "built": "2026-11-01 13:12",
+  "second": {
+    "run_id": "20261101-111423_lgbm_lf_l6_pub",
+    "weights": {
+      "log10_kcat": 0.55,
+      "log10_km": 0.55
+    }
+  },
+  "git": "24832d5-dirty",
+  "cv": {
+    "kcat_scc": 0.485108119131011,
+    "kcat_rmse": 1.3308014562756543,
+    "km_scc": 0.6916724921522962,
+    "km_rmse": 0.9291625583545989,
+    "mean_scc": 0.5883903056416536,
+    "mean_rmse": 1.1299820073151265
+  },
+  "config": {
+    "split": {
+      "strategy": "seq_kmer",
+      "threshold": 0.3,
+      "n_folds": 5,
+      "seed": 42
+    },
+    "seeds": [
+      42
+    ],
+    "features": [
+      "seq_len",
+      "seq_physchem",
+      {
+        "morgan": {
+          "radius": 2,
+          "n_bits": 1024,
+          "counts": true
+        }
+      },
+      "rdkit_desc",
+      {
+        "esm": {
+          "model": "facebook/esm2_t6_8M_UR50D",
+          "pooling": "mean"
+        }
+      },
+      {
+        "chemberta": {
+          "model": "DeepChem/ChemBERTa-77M-MTR"
+        }
+      }
+    ],
+    "model": {
+      "name": "ensemble",
+      "members": [
+        {
+          "name": "lgbm",
+          "weight": {
+            "log10_kcat": 0.75,
+            "log10_km": 0.7
+          },
+          "params": {
+            "n_estimators": 1500,
+            "learning_rate": 0.03,
+            "num_leaves": 63,
+            "min_child_samples": 20,
+            "subsample": 0.8,
+            "subsample_freq": 1,
+            "colsample_bytree": 0.3,
+            "reg_lambda": 1.0,
+            "objective": "huber",
+            "alpha": 1.0
+          }
+        },
+        {
+          "name": "mlp",
+          "weight": {
+            "log10_kcat": 0.25,
+            "log10_km": 0.3
+          },
+          "params": {
+            "hidden": [
+              512,
+              256
+            ],
+            "dropout": 0.3,
+            "input_dropout": 0.1,
+            "epochs": 40,
+            "batch_size": 256,
+            "lr": 0.001,
+            "weight_decay": 0.01,
+            "loss": "huber",
+            "huber_delta": 1.0
+          }
+        }
+      ]
+    },
+    "data": {
+      "subsample": null,
+      "extra_data": true,
+      "extra_targets": [
+        "log10_kcat",
+        "log10_km"
+      ],
+      "extra_file": "extra_public.parquet"
+    },
+    "label_features": {
+      "emb_prefix": "esm2_t6_8M_mean_",
+      "inner_folds": 5,
+      "smiles_te": {
+        "smoothing": 5
+      },
+      "enzyme_knn": {
+        "k": 10,
+        "tau": 0.1
+      },
+      "pair_nn": {
+        "tau": 0.1
+      }
+    },
+    "name": "ens_lf_esm8_pub_tuned",
+    "notes": "per-target weights fitted on OOF of 20261101-121508_ens_lf_esm8_pub (members not retrained)"
+  },
+  "pipeline_meta": {
+    "kcatkm": "0.1.0",
+    "python": "3.14.4",
+    "sklearn": "1.9.1"
+  }
+}

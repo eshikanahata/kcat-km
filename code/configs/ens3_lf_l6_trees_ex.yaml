@@ -1,0 +1,5 @@
+base: ens3_lf_l6_trees.yaml
+name: ens3_lf_l6_trees_ex
+notes: "ens3_lf_l6_trees + extra training rows (training only; same folds and scoring)."
+data:
+  extra_data: true

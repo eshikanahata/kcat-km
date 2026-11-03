@@ -1,0 +1,5 @@
+base: ens_lf_esm8.yaml
+name: ens_lf_esm8_xv
+notes: "ens_lf_esm8 + labelled val rows in training."
+data:
+  extra_train: labelled_val

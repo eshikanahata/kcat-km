@@ -1,0 +1,3 @@
+base: base.yaml
+name: ridge_starter
+notes: Re-creation of the organisers' starter (lengths + AA and SMILES character fractions, ridge alpha=10). Reference point.
